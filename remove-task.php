@@ -1,8 +1,8 @@
 <?php 
-     $DATABASE_HOST = 'localhost';
-     $DATABASE_USER = 'root';
-     $DATABASE_PASS = '';
-     $DATABASE_NAME = 'to-do';
+    $DATABASE_HOST = 'localhost';
+    $DATABASE_USER = 'root';
+    $DATABASE_PASS = '';
+    $DATABASE_NAME = 'to-do';
 
      $id = $_REQUEST['taskId'];
  
