@@ -32,12 +32,12 @@
                 $_SESSION["tasks"] = $tasks;
 
             } else {
-                $_SESSION["tasks"] = 'No tasks';
+                $_SESSION["tasks"] = 'You do not have any tasks yet!';
             }
         
             $stmt->close();
         } else {
-            $_SESSION["tasks"] = 'No tasks';
+            $_SESSION["tasks"] = 'You do not have any tasks yet!';
         }
     }
 ?>
@@ -61,22 +61,24 @@
 			<h2>Welcome back, <?=$_SESSION['name']?>!</h2>
 			<h3>Yor tasks:</h3>
             <?php 
+                echo "<ul>";
                 if (is_array($_SESSION["tasks"])) {
-                    echo "<ul>";
                     foreach ($_SESSION["tasks"] as $task) {
                         echo "<li>";
                         echo $task["title"];
-                        echo "<button onClick='removeTask($task[id])'>";
+                        echo "<button>";
+                        echo "<a href='remove-task.php?taskId={$task['id']}'>";
                         echo '<i class="fa-solid fa-trash"></i>';
+                        echo "</a>";
                         echo "</button>";
                         echo "</li>";
                     }
-                    echo "</ul>";
                 } else {
-                    echo "<h3>";
+                    echo "<li>";
                     echo $_SESSION["tasks"];
-                    echo "</h3>";
+                    echo "</li>";
                 }
+                echo "</ul>";
             ?>
 		</div>
 	</body>

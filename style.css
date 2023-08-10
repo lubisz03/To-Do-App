@@ -161,3 +161,7 @@ body.loggedin {
   border: none;
   cursor: pointer;
 }
+
+.content li button a i {
+  color: #4a536e;
+}
