@@ -1,15 +1,10 @@
 <?php 
+    include('./db/dbconfig.php');
+    include('./db/dbconnection.php');
+
     session_start();
 
-    $DATABASE_HOST = 'localhost';
-    $DATABASE_USER = 'root';
-    $DATABASE_PASS = '';
-    $DATABASE_NAME = 'to-do';   
-
-    $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-    if ( mysqli_connect_errno() ) {
-        exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-    }
+    $db = (new DB($db_config))->getConnection();
 
     if (isset($_POST["submit"])) {
         if ( !isset($_POST['title']) ) {
@@ -17,7 +12,7 @@
         }
     }
 
-    if ($stmt = $con->prepare('INSERT INTO tasks (title, user_id) VALUES(?, ?)')) {
+    if ($stmt = $db->prepare('INSERT INTO tasks (title, user_id) VALUES(?, ?)')) {
         $stmt->bind_param('si', $_POST['title'], $_SESSION['id']);
 
         if ($stmt->execute()) {
