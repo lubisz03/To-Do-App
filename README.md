@@ -3,7 +3,7 @@
 
 ## Screenshots:
 
-**_login Page:_**
+**_Login Page:_**
 
 ![](/screenshots/login-page.png)
 
